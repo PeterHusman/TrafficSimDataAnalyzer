@@ -25,16 +25,15 @@ namespace TrafficSimDataAnalyzer
             XmlDocument doc = new XmlDocument();
             doc.Load("Data.xml");
             XmlElement root = doc.DocumentElement;
-            
+
             XmlElement oldEl = null;
             XmlNode oldN = null;
             chart.Series.Clear();
+            chart.ResetAutoValues();
             Series s = new Series();
             s.ChartType = SeriesChartType.Line;
             foreach (XmlElement el in root.ChildNodes)
             {
-
-                float f = 0f;
                 if (oldEl != null && oldEl.ChildNodes.Count > 0 && float.Parse(el.ChildNodes[1].InnerText) < float.Parse(oldEl.ChildNodes[1].InnerText))
                 {
                     chart.Series.Add(s);
@@ -46,13 +45,33 @@ namespace TrafficSimDataAnalyzer
                     if(n.Name == featureName.Text)
                     {
                         s.Name = $"{featureName.Text}: {float.Parse(n.InnerText)} Trial: {chart.Series.Count}";
-                        s.Points.Add(new DataPoint(float.Parse(el.ChildNodes[1].InnerText), float.Parse(el.ChildNodes[el.ChildNodes.Count-1].InnerText)/ float.Parse(el.ChildNodes[el.ChildNodes.Count - 2].InnerText)));
-                        if (oldN != null && (n.InnerText != oldN.InnerText))
+                        float yVal = 0;
+                        float throughput = float.Parse(el.ChildNodes[el.ChildNodes.Count - 1].InnerText);
+                        float crashes = float.Parse(el.ChildNodes[el.ChildNodes.Count - 2].InnerText);
+                        if (RatioBox.SelectedIndex == 0)
                         {
-                            chart.Series.Add(s);
-                            s = new Series();
-                            s.ChartType = SeriesChartType.Line;
+                            yVal = throughput / (crashes == 0 ? 1 : crashes);
                         }
+                        else if (RatioBox.SelectedIndex == 1)
+                        {
+                            yVal = crashes / (throughput == 0 ? 1: throughput);
+                        }
+                        else if(RatioBox.SelectedIndex == 2)
+                        {
+                            yVal = crashes / (throughput + crashes);
+                        }
+                        else if(RatioBox.SelectedIndex == 3)
+                        {
+                            yVal = throughput / (throughput + crashes);
+                        }
+                        s.Points.Add(new DataPoint(float.Parse(el.ChildNodes[1].InnerText), yVal));
+                        //if (oldN != null && (n.InnerText != oldN.InnerText))
+                        //{
+                            
+                        //    chart.Series.Add(s);
+                        //    s = new Series();
+                        //    s.ChartType = SeriesChartType.Line;
+                        //}
                         oldN = n;
                     }
                 }
@@ -61,6 +80,11 @@ namespace TrafficSimDataAnalyzer
                 oldEl = el;
             }
             chart.Series.Add(s);
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

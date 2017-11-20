@@ -34,6 +34,7 @@
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.openXmlB = new System.Windows.Forms.Button();
             this.featureName = new System.Windows.Forms.TextBox();
+            this.RatioBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             this.chart.Size = new System.Drawing.Size(816, 636);
             this.chart.TabIndex = 0;
             this.chart.Text = "Throughput/Crashes Over Time";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
             // openXmlB
             // 
@@ -73,11 +75,25 @@
             this.featureName.TabIndex = 2;
             this.featureName.Text = "Enter Variable Name";
             // 
+            // RatioBox
+            // 
+            this.RatioBox.FormattingEnabled = true;
+            this.RatioBox.Items.AddRange(new object[] {
+            "Throughput:Crashes",
+            "Crashes:Throughput",
+            "Crashes:(Throughput+Crashes)",
+            "Throughput:(Throughput+Crashes)"});
+            this.RatioBox.Location = new System.Drawing.Point(939, 219);
+            this.RatioBox.Name = "RatioBox";
+            this.RatioBox.Size = new System.Drawing.Size(228, 69);
+            this.RatioBox.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 784);
+            this.Controls.Add(this.RatioBox);
             this.Controls.Add(this.featureName);
             this.Controls.Add(this.openXmlB);
             this.Controls.Add(this.chart);
@@ -94,6 +110,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.Button openXmlB;
         private System.Windows.Forms.TextBox featureName;
+        private System.Windows.Forms.ListBox RatioBox;
     }
 }
 
