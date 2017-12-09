@@ -15,6 +15,10 @@ namespace TrafficSimDataAnalyzer
     public partial class Form1 : Form
     {
 
+        XmlDocument doc = new XmlDocument();
+       
+        XmlElement root;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,9 +26,6 @@ namespace TrafficSimDataAnalyzer
 
         private void selectXmlB_Click(object sender, EventArgs e)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("Data.xml");
-            XmlElement root = doc.DocumentElement;
 
             XmlElement oldEl = null;
             XmlNode oldN = null;
@@ -85,6 +86,39 @@ namespace TrafficSimDataAnalyzer
         private void chart_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void trialSelect_Click(object sender, EventArgs e)
+        {
+            int trialsCounted = 0;
+            int trialTarget = int.Parse(trialNumBox.Text);
+            foreach(XmlElement child in root.ChildNodes)
+            {
+                if (child.HasChildNodes && child.ChildNodes.Count >= 2)
+                {
+                    if (child.ChildNodes[1].InnerText == "0.5")
+                    {
+                        trialsCounted++;
+                    }
+                    if (trialsCounted >= trialTarget)
+                    {
+                        StringBuilder output = new StringBuilder();
+                        foreach(XmlNode el in child.ChildNodes)
+                        {
+                            output.Append(el.Name);
+                            output.AppendLine(": " + el.InnerText);
+                        }
+                        trialXML.Text = output.ToString();
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            doc.Load("Data.xml");
+            root = doc.DocumentElement;
         }
     }
 }

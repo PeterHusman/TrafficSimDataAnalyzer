@@ -8,3 +8,13 @@ C:\Users\Peter Husman\Documents\GitHub\DataAnalyzer\TrafficSimDataAnalyzer\Traff
 C:\Users\Peter Husman\Documents\GitHub\DataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.csproj.CoreCompileInputs.cache
 C:\Users\Peter Husman\Documents\GitHub\DataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.exe
 C:\Users\Peter Husman\Documents\GitHub\DataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.pdb
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\bin\Debug\TrafficSimDataAnalyzer.exe.config
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\bin\Debug\TrafficSimDataAnalyzer.exe
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\bin\Debug\TrafficSimDataAnalyzer.pdb
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.csprojResolveAssemblyReference.cache
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.Form1.resources
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.Properties.Resources.resources
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.csproj.GenerateResource.Cache
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.exe
+C:\Users\Peter Husman\Documents\Github\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\TrafficSimDataAnalyzer\obj\Debug\TrafficSimDataAnalyzer.pdb
