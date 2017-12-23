@@ -19,6 +19,11 @@ namespace TrafficSimDataAnalyzer
        
         XmlElement root;
 
+        float[] widthRatios;
+        float[] heightRatios;
+        float[] xRatios;
+        float[] yRatios;
+
         public Form1()
         {
             InitializeComponent();
@@ -45,7 +50,7 @@ namespace TrafficSimDataAnalyzer
                 {
                     if(n.Name == featureName.Text)
                     {
-                        s.Name = $"{featureName.Text}: {float.Parse(n.InnerText)} Trial: {chart.Series.Count}";
+                        s.Name = $"{featureName.Text}: {n.InnerText} Trial: {chart.Series.Count}";
                         float yVal = 0;
                         float throughput = float.Parse(el.ChildNodes[el.ChildNodes.Count - 1].InnerText);
                         float crashes = float.Parse(el.ChildNodes[el.ChildNodes.Count - 2].InnerText);
@@ -119,8 +124,28 @@ namespace TrafficSimDataAnalyzer
         {
             doc.Load("Data.xml");
             root = doc.DocumentElement;
+
+            widthRatios = new float[Controls.Count];
+            heightRatios = new float[Controls.Count];
+            xRatios = new float[Controls.Count];
+            yRatios = new float[Controls.Count];
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                widthRatios[i] = Controls[i].Width / (float)Width;
+                heightRatios[i] = Controls[i].Height / (float)Height;
+                xRatios[i] = Controls[i].Location.X / (float)Width;
+                yRatios[i] = Controls[i].Location.Y / (float)Height;
+            }
         }
 
-
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                Controls[i].Width = (int)(widthRatios[i] * Width);
+                Controls[i].Height = (int)(heightRatios[i] * Height);
+                Controls[i].Location = new Point((int)(xRatios[i] * Width), (int)(yRatios[i] * Height));
+            }
+        }
     }
 }
